@@ -81,31 +81,73 @@ $mono-light-grey: #aaaaaa;
     background-color: $mono-very-dark-grey;
     color: $mono-white;
 
-    .image-grid {
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 300px);
       gap: 2rem;
       padding: 2rem 0;
 
-      .image-box {
-        overflow: hidden;
-        border-radius: 8px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease;
+      @media (max-width: 968px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-        &:hover {
-          transform: translateY(-10px);
+      @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      height: 300px;
+      width: 100%;
+
+      &:hover {
+        transform: translateY(-5px);
+
+        .gallery-item-overlay {
+          opacity: 1;
         }
 
         img {
-          width: 100%;
-          height: 400px;
-          object-fit: cover;
-          transition: transform 0.3s ease;
+          transform: scale(1.05);
+        }
+      }
 
-          &:hover {
-            transform: scale(1.05);
-          }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($mono-very-dark-grey, 0.7);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        padding: 1rem;
+        text-align: center;
+
+        h6 {
+          margin-bottom: 0.5rem;
+          color: $mono-white;
+        }
+
+        .MuiTypography-subtitle1 {
+          color: rgba($mono-white, 0.8);
         }
       }
     }
@@ -116,7 +158,7 @@ $mono-light-grey: #aaaaaa;
     text-align: center;
     background-color: $mono-white;
     color: $mono-very-dark-grey;
-    
+
     h4 {
       font-size: 2.5rem;
       font-weight: 300;
@@ -134,7 +176,7 @@ $mono-light-grey: #aaaaaa;
     overflow: hidden;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -150,7 +192,7 @@ $mono-light-grey: #aaaaaa;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url("../assets/images/gear-bg.jpg");
+      background-color: $mono-very-dark-grey;
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -238,6 +280,163 @@ $mono-light-grey: #aaaaaa;
 
         .MuiTypography-subtitle2 {
           color: $mono-light-grey;
+        }
+      }
+    }
+  }
+}
+
+// Dialog Styles - Move outside of any nested selectors
+.gallery-dialog {
+  .MuiDialog-paper {
+    background-color: $mono-very-dark-grey;
+    max-width: 1200px;
+    width: 95%;
+    margin: 1rem;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  .gallery-dialog-content {
+    display: flex;
+    position: relative;
+    min-height: 600px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      min-height: auto;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba($mono-white, 0.1);
+      border: none;
+      color: $mono-white;
+      cursor: pointer;
+      z-index: 10;
+      padding: 0.75rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba($mono-white, 0.2);
+        transform: rotate(90deg);
+      }
+    }
+
+    .dialog-image {
+      flex: 1.5;
+      max-width: 65%;
+      position: relative;
+      overflow: hidden;
+
+      @media (max-width: 768px) {
+        max-width: 100%;
+        height: 400px;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 100%;
+        background: linear-gradient(
+          to left,
+          $mono-very-dark-grey,
+          transparent
+        );
+
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+    }
+
+    .dialog-info {
+      flex: 1;
+      padding: 3rem;
+      color: $mono-white;
+      max-width: 35%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(
+        to right,
+        rgba($mono-very-dark-grey, 0.8),
+        $mono-very-dark-grey
+      );
+      backdrop-filter: blur(10px);
+
+      @media (max-width: 768px) {
+        max-width: 100%;
+        padding: 2rem;
+      }
+
+      h4 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        background: linear-gradient(
+          45deg,
+          $mono-white,
+          rgba($mono-white, 0.8)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .category {
+        color: rgba($mono-white, 0.7);
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: relative;
+        padding-left: 1rem;
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 50%;
+          width: 3px;
+          height: 1.2rem;
+          background: linear-gradient(to bottom, $mono-white, transparent);
+          transform: translateY(-50%);
+        }
+      }
+
+      .description {
+        line-height: 1.8;
+        color: rgba($mono-white, 0.9);
+        font-size: 1.1rem;
+        position: relative;
+        padding-top: 2rem;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 50px;
+          height: 1px;
+          background: linear-gradient(to right, $mono-white, transparent);
         }
       }
     }

@@ -9,6 +9,7 @@ import galleryImg3 from "../assets/images/gallery3.jpg";
 import galleryImg4 from "../assets/images/gallery4.jpg";
 import galleryImg5 from "../assets/images/gallery5.jpg";
 import galleryImg6 from "../assets/images/gallery6.jpg";
+import gearBgImage from '../assets/images/gear-bg.jpg';
 
 interface GalleryItem {
   id: number;
@@ -113,8 +114,8 @@ const Home = () => {
           <Typography variant="h3">Featured Work</Typography>
           <div className="gallery-grid">
             {galleryItems.map((item) => (
-              <div 
-                key={item.id} 
+              <div
+                key={item.id}
                 className="gallery-item"
                 onClick={() => setSelectedItem(item)}
               >
@@ -130,15 +131,15 @@ const Home = () => {
       </section>
 
       {/* Move Dialog outside the featured-section */}
-      <Dialog 
-        open={!!selectedItem} 
+      <Dialog
+        open={!!selectedItem}
         onClose={() => setSelectedItem(null)}
         maxWidth="lg"
         className="gallery-dialog"
       >
         {selectedItem && (
           <div className="gallery-dialog-content">
-            <button 
+            <button
               className="close-button"
               onClick={() => setSelectedItem(null)}
             >

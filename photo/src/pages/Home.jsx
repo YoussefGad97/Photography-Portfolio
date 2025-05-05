@@ -40,6 +40,42 @@ const Home = () => {
     }
   ];
 
+  const services = [
+    {
+      title: "Photography",
+      icon: "📸",
+      description: "Professional photography services for weddings, portraits, events, and commercial projects. Capturing moments that tell your story.",
+      features: [
+        "Wedding Photography",
+        "Portrait Sessions",
+        "Event Coverage",
+        "Commercial Shoots"
+      ]
+    },
+    {
+      title: "Videography",
+      icon: "🎥",
+      description: "High-quality video production services for weddings, events, and promotional content. Creating cinematic experiences that last forever.",
+      features: [
+        "Wedding Films",
+        "Event Videos",
+        "Promotional Content",
+        "Social Media Videos"
+      ]
+    },
+    {
+      title: "Editing",
+      icon: "✂️",
+      description: "Professional photo and video editing services to enhance your content and bring your vision to life with precision and creativity.",
+      features: [
+        "Photo Retouching",
+        "Color Grading",
+        "Video Editing",
+        "Special Effects"
+      ]
+    }
+  ];
+
   return (
     <div className="home">
       {/* Navbar */}
@@ -151,32 +187,28 @@ const Home = () => {
       <section className="services-section">
         <Container>
           <Row className="justify-content-center">
-            <Col xs={12} md={10} lg={8}>
+            <Col xs={12} md={10} lg={8} className="text-center">
               <h2>Services</h2>
-              <p>
-                I offer a variety of photography services tailored to your needs:
+              <p className="services-intro">
+                Comprehensive visual storytelling services to bring your vision to life
               </p>
-              <Row className="mt-4">
-                <Col xs={12} md={4}>
-                  <div className="service-item">
-                    <h3>Weddings</h3>
-                    <p>Capturing your special day with elegance and style.</p>
-                  </div>
-                </Col>
-                <Col xs={12} md={4}>
-                  <div className="service-item">
-                    <h3>Portraits</h3>
-                    <p>Professional portraits that tell your story.</p>
-                  </div>
-                </Col>
-                <Col xs={12} md={4}>
-                  <div className="service-item">
-                    <h3>Events</h3>
-                    <p>Documenting your events with precision and creativity.</p>
-                  </div>
-                </Col>
-              </Row>
             </Col>
+          </Row>
+          <Row className="services-grid">
+            {services.map((service, index) => (
+              <Col key={index} xs={12} md={4} className="mb-4">
+                <div className="service-item">
+                  <div className="service-icon">{service.icon}</div>
+                  <h3>{service.title}</h3>
+                  <p className="service-description">{service.description}</p>
+                  <ul className="service-features">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              </Col>
+            ))}
           </Row>
         </Container>
       </section>

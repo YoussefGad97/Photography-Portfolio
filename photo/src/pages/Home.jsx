@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar"; // Import the Navbar component
+import Footer from "../components/Footer"; // Import the Footer component
 import { Container, Row, Col } from "react-bootstrap";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -73,6 +74,30 @@ const Home = () => {
         "Video Editing",
         "Special Effects"
       ]
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: "Sarah Johnson",
+      role: "Wedding Client",
+      image: ProfilePic,
+      text: "Working with this photographer was an absolute dream! They captured every special moment of our wedding day perfectly. The attention to detail and artistic vision is truly remarkable.",
+      rating: 5
+    },
+    {
+      name: "Michael Chen",
+      role: "Portrait Session",
+      image: ProfilePic,
+      text: "I was amazed by the quality of the portraits. The photographer made me feel comfortable and natural in front of the camera. The final images exceeded all my expectations!",
+      rating: 5
+    },
+    {
+      name: "Emily Rodriguez",
+      role: "Event Photography",
+      image: ProfilePic,
+      text: "Professional, punctual, and incredibly talented. The event photos captured the energy and emotion of our corporate event perfectly. Highly recommended!",
+      rating: 5
     }
   ];
 
@@ -236,18 +261,58 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* Contact Section */}
-      <section className="contact-section">
+      {/* Testimonials Section */}
+      <section className="testimonials-section">
         <Container>
           <Row className="justify-content-center">
-            <Col xs={12} md={8} lg={6}>
-              <h2>Contact Me</h2>
-              <p>Have a project in mind? Let's work together!</p>
-              <button className="btn btn-dark btn-lg">Get in Touch</button>
+            <Col xs={12} md={10} lg={8} className="text-center">
+              <h2>Client Testimonials</h2>
+              <p className="testimonials-intro">What my clients say about their experience</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <div className="testimonials-carousel-wrapper">
+                <Carousel
+                  showArrows={true}
+                  showStatus={false}
+                  showThumbs={false}
+                  infiniteLoop={true}
+                  autoPlay={true}
+                  interval={5000}
+                  stopOnHover={true}
+                  className="testimonials-carousel"
+                >
+                  {testimonials.map((testimonial, index) => (
+                    <div key={index} className="testimonial-slide">
+                      <div className="testimonial-content">
+                        <div className="testimonial-image">
+                          <img src={testimonial.image} alt={testimonial.name} />
+                        </div>
+                        <div className="testimonial-text">
+                          <div className="rating">
+                            {[...Array(testimonial.rating)].map((_, i) => (
+                              <span key={i} className="star">★</span>
+                            ))}
+                          </div>
+                          <p className="quote">{testimonial.text}</p>
+                          <div className="client-info">
+                            <h4>{testimonial.name}</h4>
+                            <span className="role">{testimonial.role}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </Carousel>
+              </div>
             </Col>
           </Row>
         </Container>
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

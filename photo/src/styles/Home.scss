@@ -407,6 +407,139 @@
     }
   }
 
+  // Testimonials Section
+  .testimonials-section {
+    background-color: #f8f9fa;
+    padding: 6rem 0;
+    
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .testimonials-intro {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 3rem;
+    }
+
+    .testimonials-carousel-wrapper {
+      position: relative;
+      margin: 0 -15px;
+
+      .testimonials-carousel {
+        .testimonial-slide {
+          padding: 2rem 0;
+
+          .testimonial-content {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+
+            @media (max-width: 768px) {
+              flex-direction: column;
+              text-align: center;
+              padding: 2rem;
+            }
+
+            .testimonial-image {
+              flex-shrink: 0;
+              width: 120px;
+              height: 120px;
+              border-radius: 50%;
+              overflow: hidden;
+              border: 4px solid #f8f9fa;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+
+            .testimonial-text {
+              flex-grow: 1;
+
+              .rating {
+                margin-bottom: 1rem;
+
+                .star {
+                  color: #ffd700;
+                  font-size: 1.2rem;
+                  margin-right: 0.2rem;
+                }
+              }
+
+              .quote {
+                font-size: 1.1rem;
+                line-height: 1.8;
+                color: #666;
+                margin-bottom: 1.5rem;
+                font-style: italic;
+              }
+
+              .client-info {
+                h4 {
+                  font-size: 1.2rem;
+                  color: #333;
+                  margin-bottom: 0.3rem;
+                }
+
+                .role {
+                  color: #6c757d;
+                  font-size: 0.9rem;
+                }
+              }
+            }
+          }
+        }
+
+        // Custom carousel controls
+        .carousel .control-arrow {
+          background: rgba(0, 0, 0, 0.3);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          top: 50%;
+          transform: translateY(-50%);
+          margin: 0 15px;
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.5);
+          }
+
+          &:before {
+            border-width: 6px;
+          }
+        }
+
+        .carousel .control-dots {
+          bottom: 0;
+
+          .dot {
+            width: 10px;
+            height: 10px;
+            background: #6c757d;
+            box-shadow: none;
+            opacity: 0.3;
+
+            &.selected {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
   // Contact Section
   .contact-section {
     background-color: white;

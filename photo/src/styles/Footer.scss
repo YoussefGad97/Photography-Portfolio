@@ -1,0 +1,153 @@
+.footer {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 4rem 0 0;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  }
+
+  .footer-content {
+    margin-bottom: 3rem;
+  }
+
+  h3, h4 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(45deg, #6c757d, #343a40);
+    }
+  }
+
+  .footer-brand {
+    p {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+
+      a {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: #fff;
+          transform: translateY(-3px);
+        }
+      }
+    }
+  }
+
+  .footer-links {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 0.8rem;
+
+        a {
+          color: rgba(255, 255, 255, 0.7);
+          text-decoration: none;
+          transition: all 0.3s ease;
+          display: inline-block;
+
+          &:hover {
+            color: #fff;
+            transform: translateX(5px);
+          }
+        }
+      }
+    }
+  }
+
+  .footer-contact {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        color: rgba(255, 255, 255, 0.7);
+
+        i {
+          margin-right: 1rem;
+          color: #6c757d;
+          font-size: 1.1rem;
+          width: 20px;
+          text-align: center;
+        }
+
+        span {
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 0;
+
+    .copyright {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 991.98px) {
+    .footer-brand,
+    .footer-links,
+    .footer-contact {
+      margin-bottom: 2rem;
+      text-align: center;
+
+      h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .social-links {
+      justify-content: center;
+    }
+
+    .footer-links ul li a:hover {
+      transform: translateX(0) scale(1.05);
+    }
+  }
+}

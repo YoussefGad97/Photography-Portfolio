@@ -461,6 +461,96 @@
       object-fit: cover;
     }
   }
+
+  // Call to Action Banner
+  .cta-banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('../assets/images/Landing1.jpg') center/cover no-repeat fixed;
+    padding: 6rem 0;
+    color: white;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(108, 117, 125, 0.8), rgba(52, 58, 64, 0.8));
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.8s ease;
+
+      @media (max-width: 768px) {
+        font-size: 2.2rem;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      opacity: 0.9;
+      animation: fadeInUp 0.8s ease 0.2s;
+      animation-fill-mode: forwards;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      animation: fadeInUp 0.8s ease 0.4s;
+      animation-fill-mode: forwards;
+
+      @media (max-width: 576px) {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        min-width: 200px;
+
+        &.btn-primary {
+          background: linear-gradient(45deg, #6c757d, #343a40);
+          border: none;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+          }
+        }
+
+        &.btn-outline-light {
+          border: 2px solid white;
+          background: transparent;
+
+          &:hover {
+            background: white;
+            color: #343a40;
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  }
 }
 
 // Animations

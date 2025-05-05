@@ -213,6 +213,29 @@ const Home = () => {
         </Container>
       </section>
 
+      {/* Call to Action Banner */}
+      <section className="cta-banner">
+        <Container>
+          <Row className="justify-content-center">
+            <Col xs={12} md={10} lg={8} className="text-center">
+              <h2>Let's Create Something Amazing Together</h2>
+              <p>
+                Whether you're planning a wedding, need professional portraits, or want to capture your special event, 
+                I'm here to help bring your vision to life. Let's discuss your project and create memories that will last forever.
+              </p>
+              <div className="cta-buttons">
+                <a href="#contact" className="btn btn-primary btn-lg">
+                  Get in Touch
+                </a>
+                <a href="#portfolio" className="btn btn-outline-light btn-lg">
+                  View Portfolio
+                </a>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
       {/* Contact Section */}
       <section className="contact-section">
         <Container>

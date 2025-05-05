@@ -1,10 +1,45 @@
 import React from "react";
 import Navbar from "../components/Navbar"; // Import the Navbar component
 import { Container, Row, Col } from "react-bootstrap";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../styles/Home.scss"; // Import styles for the Home page
 import ProfilePic from "../assets/images/ProfilePic.png";
 
+// Import your portfolio images
+import Portfolio1 from "../assets/images/Portfolio1.jpg";
+import Portfolio2 from "../assets/images/Portfolio2.jpg";
+import Portfolio3 from "../assets/images/Portfolio4.jpeg";
+import Portfolio4 from "../assets/images/Portfolio3.jpg";
+
 const Home = () => {
+  const portfolioItems = [
+    {
+      image: Portfolio1,
+      title: "Portrait Photography",
+      description: "Capturing the essence of personality through intimate portraits that tell unique stories.",
+      category: "Portraits"
+    },
+    {
+      image: Portfolio2,
+      title: "Landscape Photography",
+      description: "Exploring the beauty of nature and urban landscapes through a creative lens.",
+      category: "Landscapes"
+    },
+    {
+      image: Portfolio3,
+      title: "Wedding Photography",
+      description: "Documenting love stories and special moments that last a lifetime.",
+      category: "Weddings"
+    },
+    {
+      image: Portfolio4,
+      title: "Event Photography",
+      description: "Capturing the energy and excitement of special events and celebrations.",
+      category: "Events"
+    }
+  ];
+
   return (
     <div className="home">
       {/* Navbar */}
@@ -80,21 +115,32 @@ const Home = () => {
               <p>Explore some of my favorite works below.</p>
             </Col>
           </Row>
-          <Row className="portfolio-gallery">
-            {/* Portfolio items will be added here */}
-            <Col xs={12} md={6} lg={4}>
-              <div className="portfolio-item">
-                {/* Add portfolio item content */}
-              </div>
-            </Col>
-            <Col xs={12} md={6} lg={4}>
-              <div className="portfolio-item">
-                {/* Add portfolio item content */}
-              </div>
-            </Col>
-            <Col xs={12} md={6} lg={4}>
-              <div className="portfolio-item">
-                {/* Add portfolio item content */}
+          <Row>
+            <Col xs={12}>
+              <div className="portfolio-carousel-wrapper">
+                <Carousel
+                  showArrows={true}
+                  showStatus={false}
+                  showThumbs={false}
+                  infiniteLoop={true}
+                  autoPlay={true}
+                  interval={5000}
+                  stopOnHover={true}
+                  className="portfolio-carousel"
+                >
+                  {portfolioItems.map((item, index) => (
+                    <div key={index} className="carousel-slide">
+                      <div className="carousel-content">
+                        <div className="text-card">
+                          <span className="category">{item.category}</span>
+                          <h3>{item.title}</h3>
+                          <p>{item.description}</p>
+                        </div>
+                        <img src={item.image} alt={item.title} />
+                      </div>
+                    </div>
+                  ))}
+                </Carousel>
               </div>
             </Col>
           </Row>
